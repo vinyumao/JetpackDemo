@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/mHomeFragment"
+    tools:ignore="UnusedNavigation">
+    <fixFragment
+        android:id="@+id/mHomeFragment"
+        android:name="com.example.testbottomview.fragment.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_mHomeFragment_to_secondActivity"
+            app:destination="@id/secondActivity" />
+    </fixFragment>
+    <fixFragment
+        android:id="@+id/mDashboardFragment"
+        android:name="com.example.testbottomview.fragment.DashboardFragment"
+        android:label="dashboard_fragment"
+        tools:layout="@layout/dashboard_fragment" />
+    <fixFragment
+        android:id="@+id/mNotificationFrament"
+        android:name="com.example.testbottomview.fragment.NotificationFragment"
+        android:label="notification_fragment"
+        tools:layout="@layout/notification_fragment" />
+    <activity
+        android:id="@+id/secondActivity"
+        android:name="com.example.testbottomview.SecondActivity"
+        android:label="activity_second"
+        tools:layout="@layout/activity_second" />
+</navigation>
