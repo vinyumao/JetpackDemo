@@ -38,6 +38,16 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.067031465" />
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/mViewPage2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/mViewPage2" />
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/mViewPage2"
         android:layout_width="0dp"
