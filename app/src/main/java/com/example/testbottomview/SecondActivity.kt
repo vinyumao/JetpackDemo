@@ -32,24 +32,23 @@ class SecondActivity : AppCompatActivity() {
                 DividerItemDecoration.VERTICAL)
         )
         mRvStudent.adapter = adapter
-        /*adapter.currentList?.addWeakCallback(null,object : PagedList.Callback(){
-            override fun onChanged(position: Int, count: Int) {
-                //adapter.notifyItemChanged(position)
-            }
-
-            override fun onInserted(position: Int, count: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onRemoved(position: Int, count: Int) {
-                adapter.notifyItemRemoved(position)
-                Log.i("SecondActivity", "onRemoved: $position")
-            }
-
-        })*/
 
         viewModel.studentList.observe(this, Observer {
             adapter.submitList(it)
+            it.addWeakCallback(null,object : PagedList.Callback(){
+                override fun onChanged(position: Int, count: Int) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onInserted(position: Int, count: Int) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onRemoved(position: Int, count: Int) {
+                    TODO("Not yet implemented")
+                }
+
+            })
         })
 
 

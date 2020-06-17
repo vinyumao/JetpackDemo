@@ -33,6 +33,10 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_mHomeFragment_to_secondActivity)
         }
         mBtnNavigation.isClickable = false
+        mBtnViewPage2.setOnClickListener{
+            findNavController().navigate(R.id.action_mHomeFragment_to_viewPage2Activity)
+        }
+        mBtnViewPage2.isClickable = false
     }
 
     override fun onAttach(activity: Activity) {

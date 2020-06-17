@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mHomeFragment_to_secondActivity"
             app:destination="@id/secondActivity" />
+        <action
+            android:id="@+id/action_mHomeFragment_to_viewPage2Activity"
+            app:destination="@id/viewPage2Activity" />
     </fixFragment>
     <fixFragment
         android:id="@+id/mDashboardFragment"
@@ -29,4 +32,9 @@
         android:name="com.example.testbottomview.SecondActivity"
         android:label="activity_second"
         tools:layout="@layout/activity_second" />
+    <activity
+        android:id="@+id/viewPage2Activity"
+        android:name="com.example.testbottomview.ViewPage2Activity"
+        android:label="activity_view_page2"
+        tools:layout="@layout/activity_view_page2" />
 </navigation>
