@@ -1,5 +1,6 @@
 package com.example.testbottomview
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,8 +46,8 @@ class MyPageAdapter : PagedListAdapter<Student, MyPageAdapter.MyViewHolder>(DIFF
             }
 
             override fun areContentsTheSame(oldItem: Student, newItem: Student): Boolean {
-//                return oldItem.id == newItem.id && oldItem.name == newItem.name && oldItem.age == newItem.age
-                return oldItem == newItem
+                return oldItem.id == newItem.id && oldItem.name == newItem.name && oldItem.age == newItem.age
+//                return oldItem == newItem
             }
 
         }
