@@ -61,7 +61,7 @@ class OneFragment : Fragment() {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     viewModel.saveToPhoto(imageView.drawable.toBitmap())
                 }else{
-                    Toast.makeText(requireContext(), "保持失败,请赋予应用写入存储权限", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "保存失败,请赋予应用写入存储权限", Toast.LENGTH_SHORT).show()
                 }
             }
         }

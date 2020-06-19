@@ -1,9 +1,9 @@
 package com.example.testbottomview
 
 import android.app.Application
+import com.example.common.BaseApp
 
-class MyApp: Application() {
-
+class MyApp: BaseApp() {
     companion object{
         lateinit var instance: MyApp
     }

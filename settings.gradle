@@ -1,2 +1,6 @@
+include ':bean'
+include ':net'
+include ':common'
+include ':base'
 include ':app'
 rootProject.name = "TestBottomVIew"

@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.base.L
 import com.example.testbottomview.repository.Student
 import com.example.testbottomview.repository.StudentDao
 import com.example.testbottomview.repository.StudentDatabase
@@ -35,20 +36,18 @@ class SecondActivity : AppCompatActivity() {
 
         viewModel.studentList.observe(this, Observer {
             adapter.submitList(it)
-            it.addWeakCallback(null,object : PagedList.Callback(){
+            L.i("data changed")
+            /*it.addWeakCallback(null,object : PagedList.Callback(){
                 override fun onChanged(position: Int, count: Int) {
-                    TODO("Not yet implemented")
                 }
 
                 override fun onInserted(position: Int, count: Int) {
-                    TODO("Not yet implemented")
                 }
 
                 override fun onRemoved(position: Int, count: Int) {
-                    TODO("Not yet implemented")
                 }
 
-            })
+            })*/
         })
 
 
