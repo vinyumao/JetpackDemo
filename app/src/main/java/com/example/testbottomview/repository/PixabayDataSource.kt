@@ -26,16 +26,16 @@ class PixabayDataSource(private val context: Context,private val dashboardViewMo
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, Pixabay.PhotoItem>
     ) {
-        L.i("PixabayDataSource CurrentThread:"+Thread.currentThread().name)
+        L.i("requestedLoadSize:${params.requestedLoadSize}")
         /*var result = ApiService.getApiService<PixabayService>()
             .LoadPicture(queryKey, 1)
 
             callback.onResult(result.hits.toList(),null,2)*/
-        dashboardViewModel.viewModelScope.launch {
+        dashboardViewModel.launch {
             var result:Pixabay? = null
             withContext(Dispatchers.IO){
                 result = ApiService.getApiService<PixabayService>()
-                    .LoadPicture("17120440-b20cc91293cbce0d16b31fd2e",queryKey, 50,1)
+                    .LoadPicture("17120440-b20cc91293cbce0d16b31fd2e",queryKey, params.requestedLoadSize,1)
             }
             result?.hits?.toMutableList()?.let {
                 callback.onResult(it,null,2)
@@ -47,6 +47,17 @@ class PixabayDataSource(private val context: Context,private val dashboardViewMo
         params: LoadParams<Int>,
         callback: LoadCallback<Int, Pixabay.PhotoItem>
     ) {
+        L.i("requestedLoadSize:${params.requestedLoadSize}")
+        dashboardViewModel.launch(refresh = false) {
+            var result:Pixabay? = null
+            withContext(Dispatchers.IO){
+                result = ApiService.getApiService<PixabayService>()
+                    .LoadPicture("17120440-b20cc91293cbce0d16b31fd2e",queryKey, params.requestedLoadSize,params.key)
+            }
+            result?.hits?.toMutableList()?.let {
+                callback.onResult(it,params.key + 1)
+            }
+        }
     }
 
     override fun loadBefore(

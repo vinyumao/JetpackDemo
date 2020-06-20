@@ -62,4 +62,6 @@ dependencies {
     api root_dependencies.glide
     kapt root_dependencies.glide_compiler
     api root_dependencies.logger
+    api root_dependencies.swiperefreshlayout
+    api root_dependencies.lifecycle_runtime_ktx
 }

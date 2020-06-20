@@ -12,38 +12,39 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.base.L
+import com.example.common.BaseVMFragment
 import com.example.testbottomview.R
+import com.example.testbottomview.repository.PixabayRepository
 import kotlinx.android.synthetic.main.dashboard_fragment.*
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : BaseVMFragment<PixabayRepository,DashboardViewModel>() {
 
-    companion object {
-        fun newInstance() = DashboardFragment()
-    }
-
-    private lateinit var viewModel: DashboardViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        L.i( "onCreateView: ")
-        return inflater.inflate(R.layout.dashboard_fragment, container, false)
-    }
+    override fun getLayoutResID() = R.layout.dashboard_fragment
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
         L.i( "onActivityCreated: ")
+    }
+
+    override fun initData(savedInstanceState: Bundle?) {
+    }
+
+    override fun initView(savedInstanceState: Bundle?) {
         val dashboardAdapter = DashboardAdapter()
-        mRvPictrue.apply {
+        mRvPicture.apply {
             adapter = dashboardAdapter
             layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         }
-        viewModel.pagedListLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
             dashboardAdapter.submitList(it)
+            mSwipeRefreshLayout.isRefreshing = false
         })
+        mSwipeRefreshLayout.setOnRefreshListener {
+            viewModel.reFreshData()
+        }
+        mSwipeRefreshLayout.isRefreshing = true
     }
+
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)
         L.i( "onAttach: ")
@@ -58,4 +59,6 @@ class DashboardFragment : Fragment() {
         super.onDestroy()
         L.i( "onDestroy: ")
     }
+
+    override fun createViewModel() = ViewModelProvider(this).get(DashboardViewModel::class.java)
 }

@@ -15,6 +15,6 @@ interface PixabayService {
     @GET("api/")
     suspend fun LoadPicture(@Query("key") key :String,
                             @Query("q") queryKey: String,
-                            @Query("per_page") perPage: Int,
+                            @Query("per_page") pageSize: Int,
                             @Query("page") pageNum: Int): Pixabay
 }

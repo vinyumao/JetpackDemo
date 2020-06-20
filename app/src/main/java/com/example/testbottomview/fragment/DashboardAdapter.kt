@@ -58,8 +58,8 @@ class DashboardAdapter : PagedListAdapter<Pixabay.PhotoItem, CommonViewHolder>(D
         if (item != null){
             val itemWidth: Int = MyApp.instance.resources.displayMetrics.widthPixels / 2 - DensityUtil.dp2px(MyApp.instance,16.0f)
             val finalHeight = (item.photoHeight / (item.photoWidth * 1.0f / itemWidth)).toInt()
-            holder.itemView.layoutParams.height = finalHeight
-            L.i("itemWith = $itemWidth ----- $finalHeight")
+            holder.itemView.layoutParams.height = item.photoHeight
+            holder.itemView.mTvPicSize.text = "${item.photoWidth}X${item.photoHeight}  position:${position}"
         }
         Glide.with(holder.itemView)
             .load(getItem(position)?.previewUrl)

@@ -3,6 +3,10 @@ package com.example.testbottomview
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import androidx.core.view.children
+import androidx.core.view.forEach
+import androidx.core.view.get
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -25,6 +29,11 @@ class MainActivity : AppCompatActivity() {
         val configuration = AppBarConfiguration.Builder(mBottomBar.menu).build()
         setupActionBarWithNavController(navController,configuration)
         mBottomBar.setupWithNavController(navController)
-        L.i("--------------------------------------------")
+        //去掉长按菜单 弹出菜单文字Toast
+        mBottomBar.getChildAt(0).findViewById<View>(R.id.mHomeFragment).setOnLongClickListener { true }
+        mBottomBar.getChildAt(0).findViewById<View>(R.id.mDashboardFragment).setOnLongClickListener { true }
+        mBottomBar.getChildAt(0).findViewById<View>(R.id.mNotificationFragment).setOnLongClickListener { true }
     }
+
+
 }
