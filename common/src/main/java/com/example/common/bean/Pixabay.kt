@@ -1,6 +1,7 @@
-package com.example.bean.pixabay
+package com.example.common.bean
 
 import android.os.Parcelable
+import com.example.common.BaseResponseResult
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -12,9 +13,9 @@ import kotlinx.android.parcel.Parcelize
  */
  data class Pixabay(
     val totalHits:Int,
-    val hits:Array<PhotoItem>,
+    val hits:Array<Pixabay.PhotoItem>,
     val total:Int
-) {
+):BaseResponseResult<Pixabay> {
 
 
     @Parcelize
@@ -28,6 +29,16 @@ import kotlinx.android.parcel.Parcelize
         @SerializedName("likes") val photoLikes:Int,
         @SerializedName("favorites") val photoFavorites:Int
     ): Parcelable
+    //例如 errorCode = 0
+    override fun isSuccess(): Boolean  = true
+
+    override fun isTokenERROR(): Boolean  = false
+
+    override fun isNeedUpdate(): Boolean = false
+    override fun getConvertErrorMsg(): String = "加载数据失败"
+    override fun  getData(): Pixabay {
+        return this
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

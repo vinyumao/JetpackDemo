@@ -34,14 +34,14 @@ abstract class BaseViewModel<T:BaseRepository>(application: Application) : Andro
         viewModelScope.launch {
             try {
                 if (refresh) {
-                    statusLiveData.value   = Request(Request.State.REFRESH,showDialog)
+                    statusLiveData.postValue(Request(Request.State.REFRESH,showDialog))
                 } else {
-                    statusLiveData.value = Request(Request.State.START,showDialog)
+                    statusLiveData.postValue(Request(Request.State.START,showDialog))
                 }
                 block()
-                statusLiveData.value = Request(Request.State.FINISH,showDialog)
+                statusLiveData.postValue(Request(Request.State.FINISH,showDialog))
             } catch (e: Exception) {
-                statusLiveData.value = Request(Request.State.ERROR,showDialog,e)
+                statusLiveData.postValue(Request(Request.State.ERROR,showDialog,e))
                 //处理协程异常
             }
         }

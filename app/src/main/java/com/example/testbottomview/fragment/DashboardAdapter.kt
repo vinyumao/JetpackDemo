@@ -1,25 +1,16 @@
 package com.example.testbottomview.fragment
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
-import com.example.base.L
 import com.example.base.utlis.DensityUtil
-import com.example.bean.pixabay.Pixabay
 import com.example.common.CommonViewHolder
+import com.example.common.bean.Pixabay
 import com.example.testbottomview.MyApp
 import com.example.testbottomview.R
 import kotlinx.android.synthetic.main.item_rv_stagger_image.view.*
-import kotlin.properties.Delegates
 
 /**
  * ClassName:      DashboardAdapter

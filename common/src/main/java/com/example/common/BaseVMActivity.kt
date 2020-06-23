@@ -50,7 +50,7 @@ abstract class BaseVMActivity<V : BaseViewModel<BaseRepository>> : BaseSimpleAct
                         if (showDialog) {
                             //DialogHelper.getInstance().dismissProgress()
                         }
-                        L.d("coroutine异常")
+                        L.d("coroutine异常:${exception}")
                     }
                 }
             }

@@ -36,8 +36,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(path: ':common')
-    implementation project(path: ':net')
+    api project(path: ':net')
     kapt root_dependencies.room_compiler
     kapt root_dependencies.glide_compiler
 }

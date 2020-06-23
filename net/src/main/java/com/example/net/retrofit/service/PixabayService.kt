@@ -1,6 +1,6 @@
 package com.example.net.retrofit.service
 
-import com.example.bean.pixabay.Pixabay
+import com.example.common.bean.Pixabay
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
