@@ -21,7 +21,8 @@ abstract class BaseRepository {
         return try {
             call()
         } catch (e: Exception) {
-            ApiResult.Error(NetWorkException("网络异常",e))
+            e.printStackTrace()
+            ApiResult.Error(NetWorkException(e.message?:"网络异常",e))
         }
     }
 

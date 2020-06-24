@@ -15,10 +15,10 @@ import com.example.net.retrofit.service.PixabayService
 class PixabayRepository : BaseRepository() {
 
     private val _key = "17120440-b20cc91293cbce0d16b31fd2e"
-    suspend fun LoadPicture(queryKey: String, loadSize: Int, pageNum: Int): ApiResult<Pixabay> {
+    suspend fun loadPicture(queryKey: String, loadSize: Int, pageNum: Int): ApiResult<Pixabay> {
         return safeApiCall("加载图片失败"){
             val data = ApiService.getApiService<PixabayService>()
-                .LoadPicture(_key, queryKey, loadSize, 1)
+                .LoadPicture(_key, queryKey, loadSize, pageNum)
             executeResponse(data)
         }
     }

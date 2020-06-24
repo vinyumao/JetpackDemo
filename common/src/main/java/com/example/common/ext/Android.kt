@@ -25,8 +25,8 @@ fun <T : Any> ViewModel.holdResult(
     }else if(result is ApiResult.Error){
         if (result.exception is ApiException){
             apiErrorBlock?.invoke(result.exception)
-        }else{
-            netWorkErrorBlock?.invoke(result.exception as NetWorkException)
+        }else if(result.exception is NetWorkException){
+            netWorkErrorBlock?.invoke(result.exception)
         }
     }
 }

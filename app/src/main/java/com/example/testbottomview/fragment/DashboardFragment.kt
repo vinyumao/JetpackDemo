@@ -25,7 +25,7 @@ class DashboardFragment : BaseVMFragment<PixabayRepository,DashboardViewModel>()
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        val dashboardAdapter = DashboardAdapter()
+        val dashboardAdapter = DashboardAdapter(viewModel)
         mRvPicture.apply {
             adapter = dashboardAdapter
             layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
@@ -33,6 +33,10 @@ class DashboardFragment : BaseVMFragment<PixabayRepository,DashboardViewModel>()
         viewModel.pagedListLiveData.observe(viewLifecycleOwner, Observer {
             dashboardAdapter.submitList(it)
             mSwipeRefreshLayout.isRefreshing = false
+        })
+        viewModel.requestStatus.observe(viewLifecycleOwner, Observer {
+            dashboardAdapter.updateRequestStatus(it)
+            L.i("RequestStatus:${it.name}")
         })
         mSwipeRefreshLayout.setOnRefreshListener {
             viewModel.reFreshData()
