@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.base.L
 import com.example.common.BaseVMFragment
+import com.example.net.RequestStatus
 import com.example.testbottomview.R
 import com.example.testbottomview.repository.PixabayRepository
 import kotlinx.android.synthetic.main.dashboard_fragment.*
@@ -32,10 +33,10 @@ class DashboardFragment : BaseVMFragment<PixabayRepository,DashboardViewModel>()
         }
         viewModel.pagedListLiveData.observe(viewLifecycleOwner, Observer {
             dashboardAdapter.submitList(it)
-            mSwipeRefreshLayout.isRefreshing = false
         })
         viewModel.requestStatus.observe(viewLifecycleOwner, Observer {
             dashboardAdapter.updateRequestStatus(it)
+            mSwipeRefreshLayout.isRefreshing = it == RequestStatus.INITIAL_LOADING
             L.i("RequestStatus:${it.name}")
         })
         mSwipeRefreshLayout.setOnRefreshListener {
