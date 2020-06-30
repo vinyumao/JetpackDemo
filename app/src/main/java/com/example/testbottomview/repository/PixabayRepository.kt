@@ -5,6 +5,7 @@ import com.example.common.BaseRepository
 import com.example.common.bean.Pixabay
 import com.example.net.ApiService
 import com.example.net.retrofit.service.PixabayService
+import javax.inject.Inject
 
 /**
  * ClassName:      PixabayRepository
@@ -12,7 +13,7 @@ import com.example.net.retrofit.service.PixabayService
  * Author:         mwy
  * CreateDate:     2020/6/20 20:52
  */
-class PixabayRepository : BaseRepository() {
+class PixabayRepository @Inject constructor() : BaseRepository() {
 
     private val _key = "17120440-b20cc91293cbce0d16b31fd2e"
     suspend fun loadPicture(queryKey: String, loadSize: Int, pageNum: Int): ApiResult<Pixabay> {

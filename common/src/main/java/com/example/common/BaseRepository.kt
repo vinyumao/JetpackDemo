@@ -17,17 +17,22 @@ abstract class BaseRepository {
         return call.invoke()
     }*/
 
-    suspend fun <T : Any> safeApiCall( errorMessage: String,call: suspend () -> ApiResult<T>): ApiResult<T> {
+    protected suspend fun <T : Any> safeApiCall(
+        errorMessage: String,
+        call: suspend () -> ApiResult<T>
+    ): ApiResult<T> {
         return try {
             call()
         } catch (e: Exception) {
             e.printStackTrace()
-            ApiResult.Error(NetWorkException(e.message?:"网络异常",e))
+            ApiResult.Error(NetWorkException(e.message ?: "网络异常", e))
         }
     }
 
-    suspend fun <T : Any> executeResponse(response: BaseResponseResult<T>, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
-                                          errorBlock: (suspend CoroutineScope.() -> Unit)? = null): ApiResult<T> {
+    protected suspend fun <T : Any> executeResponse(
+        response: BaseResponseResult<T>, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
+        errorBlock: (suspend CoroutineScope.() -> Unit)? = null
+    ): ApiResult<T> {
         return coroutineScope {
             if (!response.isSuccess()) {
                 errorBlock?.let { it() }

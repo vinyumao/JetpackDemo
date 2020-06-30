@@ -1,8 +1,9 @@
 package com.example.testbottomview
 
-import android.app.Application
 import com.example.common.BaseApp
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class MyApp: BaseApp() {
     companion object{
         lateinit var instance: MyApp

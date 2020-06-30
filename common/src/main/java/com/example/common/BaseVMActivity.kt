@@ -15,19 +15,10 @@ import java.lang.reflect.ParameterizedType
  * Author:         mwy
  * CreateDate:     2020/6/20 20:15
  */
-abstract class BaseVMActivity<V : BaseViewModel<BaseRepository>> : BaseSimpleActivity() {
-    protected val viewModel: V by lazy {
-        createViewModel()
-    }
+abstract class BaseVMActivity<V : BaseViewModel> : BaseSimpleActivity() {
 
-    abstract fun createViewModel(): V
 
-    override fun initViewModel() {
-        super.initViewModel()
-        initViewModelActions()
-    }
-
-    private fun initViewModelActions() {
+    protected fun initViewModelActions(viewModel:BaseViewModel) {
         viewModel.statusLiveData.observe(this, Observer { request ->
             request?.run {
                 when (state) {

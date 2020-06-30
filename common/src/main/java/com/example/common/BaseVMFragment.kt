@@ -19,19 +19,16 @@ import java.lang.reflect.ParameterizedType
  * Author:         mwy
  * CreateDate:     2020/6/20 20:47
  */
-abstract class BaseVMFragment<R : BaseRepository, V : BaseViewModel<R>> : BaseSimpleFragment() {
-    protected val viewModel: V by lazy {
-        createViewModel()
-    }
-
-    abstract fun createViewModel(): V
+abstract class BaseVMFragment : BaseSimpleFragment() {
 
     override fun initViewModel() {
         super.initViewModel()
-        initViewModelActions()
+//        initViewModelActions(getViewModel())
     }
 
-    private fun initViewModelActions() {
+//    abstract fun getViewModel():BaseViewModel
+
+    private fun initViewModelActions(viewModel:BaseViewModel) {
         viewModel.statusLiveData.observe(this, Observer { request ->
             request?.run {
                 when (state) {

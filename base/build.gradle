@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 def root_android = rootProject.ext.android
 def root_dependencies = rootProject.ext.dependencies
@@ -38,6 +39,7 @@ dependencies {
 
     api root_dependencies.kotlin
     api root_dependencies.core_ktx
+    api root_dependencies.fragment_ktx
     api root_dependencies.appcompat
     api root_dependencies.constraintlayout
     api root_dependencies.material
@@ -64,4 +66,9 @@ dependencies {
     api root_dependencies.logger
     api root_dependencies.swiperefreshlayout
     api root_dependencies.lifecycle_runtime_ktx
+
+    //hilt
+    api root_dependencies.dagger_hilt
+    kapt root_dependencies.dagger_hilt_compiler
+    api root_dependencies.hilt_lifecycle_viewmodel
 }

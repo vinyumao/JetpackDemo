@@ -12,12 +12,7 @@ import kotlinx.coroutines.launch
  * Author:         mwy
  * CreateDate:     2020/6/20 20:01
  */
-abstract class BaseViewModel<T:BaseRepository>(application: Application) : AndroidViewModel(application) {
-    protected val repository by lazy {
-        createRepository()
-    }
-
-    abstract fun createRepository(): T
+abstract class BaseViewModel constructor (application: Application) : AndroidViewModel(application) {
 
     /**
      * 协程状态管理

@@ -3,17 +3,20 @@ package com.example.testbottomview.fragment
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.base.L
 import com.example.common.BaseVMFragment
 import com.example.net.RequestStatus
 import com.example.testbottomview.R
-import com.example.testbottomview.repository.PixabayRepository
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.dashboard_fragment.*
 
-class DashboardFragment : BaseVMFragment<PixabayRepository,DashboardViewModel>() {
+@AndroidEntryPoint
+class DashboardFragment : BaseVMFragment() {
+
+    private val viewModel by viewModels<DashboardViewModel>()
 
     override fun getLayoutResID() = R.layout.dashboard_fragment
 
@@ -59,6 +62,4 @@ class DashboardFragment : BaseVMFragment<PixabayRepository,DashboardViewModel>()
         super.onDestroy()
         L.i( "onDestroy: ")
     }
-
-    override fun createViewModel() = ViewModelProvider(this).get(DashboardViewModel::class.java)
 }
