@@ -23,10 +23,14 @@
         android:label="dashboard_fragment"
         tools:layout="@layout/dashboard_fragment" />
     <fixFragment
-        android:id="@+id/mNotificationFrament"
+        android:id="@+id/mNotificationFragment"
         android:name="com.example.testbottomview.fragment.NotificationFragment"
         android:label="notification_fragment"
-        tools:layout="@layout/notification_fragment" />
+        tools:layout="@layout/notification_fragment" >
+        <action
+            android:id="@+id/action_mNotificationFragment_to_videoActivity"
+            app:destination="@id/videoActivity" />
+    </fixFragment>
     <activity
         android:id="@+id/secondActivity"
         android:name="com.example.testbottomview.SecondActivity"
@@ -37,4 +41,9 @@
         android:name="com.example.testbottomview.ViewPage2Activity"
         android:label="activity_view_page2"
         tools:layout="@layout/activity_view_page2" />
+    <activity
+        android:id="@+id/videoActivity"
+        android:name="com.example.testbottomview.VideoActivity"
+        android:label="activity_video"
+        tools:layout="@layout/activity_video" />
 </navigation>

@@ -1,6 +1,7 @@
 package com.example.testbottomview.fragment
 
 import android.app.Application
+import android.os.Looper
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -37,5 +38,4 @@ class DashboardViewModel @ViewModelInject constructor(
     fun retryFetchData() {
         factory.pixabayDataSource.value?.retry?.invoke()
     }
-
 }

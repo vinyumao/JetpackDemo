@@ -48,6 +48,7 @@ dependencies {
     api root_dependencies.legacy_support_v4
     api root_dependencies.lifecycle
     api root_dependencies.viewmodel
+    api root_dependencies.livedata
     api root_dependencies.room_runtime
     // For Kotlin use kapt instead of annotationProcessor
     kapt root_dependencies.room_compiler

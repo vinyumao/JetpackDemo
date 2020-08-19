@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         )
         navController.setGraph(R.navigation.nav_main)
         val configuration = AppBarConfiguration.Builder(mBottomBar.menu).build()
-        setupActionBarWithNavController(navController, configuration)
+//        setupActionBarWithNavController(navController, configuration)
         mBottomBar.setupWithNavController(navController)
         //去掉长按菜单 弹出菜单文字Toast
         mBottomBar.getChildAt(0).findViewById<View>(R.id.mHomeFragment)

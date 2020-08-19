@@ -7,18 +7,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.testbottomview.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.notification_fragment.*
 
+@AndroidEntryPoint
 class NotificationFragment : Fragment() {
+
+    val viewModel by viewModels<NotificationViewModel>()
 
     companion object {
         fun newInstance() = NotificationFragment()
         const val TAG: String = "DashboardFragment"
     }
-
-    private lateinit var viewModel: NotificationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +34,6 @@ class NotificationFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(NotificationViewModel::class.java)
-        // TODO: Use the ViewModel
         Log.i(TAG, "onActivityCreated: ")
     }
     override fun onAttach(activity: Activity) {
@@ -43,6 +45,9 @@ class NotificationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.i(TAG, "onViewCreated: ")
         textView3.text = "$this\ntag:$tag"
+        mBtnVideo.setOnClickListener {
+            findNavController().navigate(R.id.action_mNotificationFragment_to_videoActivity)
+        }
     }
 
     override fun onDestroy() {

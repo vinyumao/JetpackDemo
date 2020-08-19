@@ -30,7 +30,7 @@ ext {
             logger                  : '2.2.0',
             swiperefreshlayout      : '1.1.0-rc01',
             dagger_hilt             : '2.28-alpha',
-            hilt_lifecycle_viewmodel: '1.0.0-alpha01',
+            hilt_lifecycle_viewmodel: '1.0.0-alpha02',
             fragment_ktx            : '1.2.4'
     ]
 
@@ -49,6 +49,7 @@ ext {
             lifecycle               : "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle",
             lifecycle_runtime_ktx   : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
             viewmodel               : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
+            livedata               : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle",
             room_runtime            : "androidx.room:room-runtime:$versions.room",
             // For Kotlin use kapt instead of annotationProcessor
             room_compiler           : "androidx.room:room-compiler:$versions.room",
