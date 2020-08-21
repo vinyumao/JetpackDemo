@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.testbottomview.R
+import com.example.testbottomview.test.InlineTest
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.notification_fragment.*
 
@@ -48,6 +49,11 @@ class NotificationFragment : Fragment() {
         mBtnVideo.setOnClickListener {
             findNavController().navigate(R.id.action_mNotificationFragment_to_videoActivity)
         }
+        viewModel.testTailrec()
+        val inlineTest = InlineTest().also {
+            it.testInlineFunction()
+        }
+
     }
 
     override fun onDestroy() {
