@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.testbottomview.R
 import com.example.testbottomview.test.InlineTest
@@ -49,12 +50,13 @@ class NotificationFragment : Fragment() {
             findNavController().navigate(R.id.action_mNotificationFragment_to_videoActivity)
         }
         viewModel.testTailrec()
+        lifecycleScope
         val inlineTest = InlineTest().also {
             //it.testInlineFunction()
             //it.testRunningBlock()
         }
-
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

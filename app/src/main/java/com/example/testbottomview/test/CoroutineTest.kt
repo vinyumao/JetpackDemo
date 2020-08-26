@@ -121,12 +121,12 @@ class CoroutineTest {
         println("Result is $result")
     }
 
-    suspend fun doSomethingUsefulOne(): Int {
+    private suspend fun doSomethingUsefulOne(): Int {
         delay(1000L) // 假设我们在这⾥做了⼀些有⽤的事
         return 13
     }
 
-    suspend fun doSomethingUsefulTwo(): Int {
+    private suspend fun doSomethingUsefulTwo(): Int {
         delay(1000L) // 假设我们在这⾥也做了⼀些有⽤的事
         return 29
     }
