@@ -19,7 +19,7 @@ class PixabayRepository @Inject constructor() : BaseRepository() {
     suspend fun loadPicture(queryKey: String, loadSize: Int, pageNum: Int): ApiResult<Pixabay> {
         return safeApiCall("加载图片失败"){
             val data = ApiService.getApiService<PixabayService>()
-                .LoadPicture(_key, queryKey, loadSize, pageNum)
+                .loadPicture(_key, queryKey, loadSize, pageNum)
             executeResponse(data)
         }
     }

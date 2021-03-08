@@ -1,6 +1,5 @@
 package com.example.testbottomview.fragment
 
-import android.app.usage.NetworkStats
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -95,8 +94,7 @@ class DashboardAdapter(private var viewModel: DashboardViewModel) :
             val finalHeight =
                 (photoItem.photoHeight / (photoItem.photoWidth * 1.0f / itemWidth)).toInt()
             itemView.layoutParams.height = photoItem.photoHeight
-            itemView.mTvPicSize.text =
-                "${photoItem.photoWidth}X${photoItem.photoHeight}  position:${position}"
+            itemView.mTvPicSize.text = String.format(MyApp.instance.getString(R.string.img_text),photoItem.photoWidth,photoItem.photoHeight,adapterPosition)
             Glide.with(itemView)
                 .load(photoItem.previewUrl)
                 .placeholder(R.drawable.ic_placeholder_400)

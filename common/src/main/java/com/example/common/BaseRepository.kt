@@ -4,7 +4,6 @@ import com.example.common.error.ApiException
 import com.example.common.error.NetWorkException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
-import java.io.IOException
 
 /**
  * ClassName:      BaseRepository
@@ -30,7 +29,8 @@ abstract class BaseRepository {
     }
 
     protected suspend fun <T : Any> executeResponse(
-        response: BaseResponseResult<T>, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
+        response: BaseResponseResult<T>,
+        successBlock: (suspend CoroutineScope.() -> Unit)? = null,
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null
     ): ApiResult<T> {
         return coroutineScope {

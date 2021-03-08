@@ -1,19 +1,18 @@
 package com.example.testbottomview
 
 import android.app.Application
-import android.media.MediaPlayer
 import android.view.View
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.viewModelScope
 import com.example.base.L
 import com.example.common.BaseViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import okhttp3.internal.notify
-import javax.inject.Inject
 
 /**
  * ClassName:      VideoViewModel
@@ -131,7 +130,14 @@ class VideoViewModel @ViewModelInject constructor(
         viewModelScope.launch {
             while (true){
                 delay(500)
-                _progress.value = mediaPlayer.currentPosition
+                //防止出现视频播放完毕,mediaPlayer.currentPosition的值不是视频时长最大值(mediaPlayer.duration)
+                //从而出现播放完毕,进度条回跳.进度条显示错误的情况
+                //从而手动设置进度条的值为视频长度
+                if(_playerStatus.value == PlayerStatus.Completed){
+                    _progress.value = mediaPlayer.duration
+                }else{
+                    _progress.value = mediaPlayer.currentPosition
+                }
             }
         }
     }

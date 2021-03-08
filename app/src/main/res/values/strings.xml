@@ -3,4 +3,5 @@
     <string name="dashboard">dashboard</string>
     <string name="notification">notification</string>
     <string name="home">home</string>
+    <string name="img_text">%1$dX%2$d Position:%3$d</string>
 </resources>
